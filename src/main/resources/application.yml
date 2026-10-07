@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: cqrs-read-model
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop
+    username: shop
+    password: shop
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  data:
+    mongodb:
+      uri: mongodb://localhost:27018/shop_read
+
+app:
+  projection:
+    enabled: true
+    # How often the projector polls. This interval is the floor of the lag a user can see,
+    # and the first thing to tune when "I saved it and it is not there" shows up.
+    interval: PT0.2S
+
+logging:
+  level:
+    com.gkcontas.cqrs: INFO
+
+server:
+  error:
+    include-message: always
