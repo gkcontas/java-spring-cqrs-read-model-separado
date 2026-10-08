@@ -41,6 +41,10 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok")
 }
 
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("-Xlint:deprecation")
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
 }
